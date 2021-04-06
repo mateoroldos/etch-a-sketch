@@ -57,20 +57,31 @@ function getRandomColor() {
     return color;
 }
 
-// When hover on grid change color
+// Change background depending the toggle
+
+function changeBackground (e) {
+
+    let checkBox = document.getElementById("checkbox");
+
+    if (checkBox.checked == true){
+        e.target.setAttribute("style", "background-color: " +getRandomColor()+ ";");
+    } 
+    else {
+        e.target.setAttribute("style", "background-color: black;");        
+    }
+}
+
+// When hover change background
 
 function mouseHover () {
+
     const gridSquares = document.querySelectorAll(".gridChild")
-
-
-    gridSquares.forEach((div) => {
     
+    gridSquares.forEach((div) => { 
         div.addEventListener('mouseenter', (e) => {
-      
-            e.target.setAttribute("style", "background-color: " +getRandomColor()+ ";");
-            console.log (e)
+            changeBackground (e)
+        });
     });
-});
 
 }
 
